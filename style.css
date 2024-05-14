@@ -31,7 +31,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 6px 10px;
+    padding: 10px 10px 10px;
     gap: 15px;
 }
 
@@ -47,7 +47,7 @@ body {
     background: black;
     border-radius: 50%;
     justify-content: center;
-
+    z-index: 11;
 }
 
 .logo__text {
@@ -96,6 +96,58 @@ body {
 .contacts__link:hover {
     color: white;
     background: black;
+}
+
+.burger-icon {
+    display: none;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+}
+
+.burger-icon span,
+.burger-icon span::before,
+.burger-icon span::after {
+    display: block;
+    width: 40px;
+    height: 3px;
+    border-radius: 100px;
+    background: black;
+    transition: all .4s;
+}
+
+.burger-icon span {
+    position: relative;
+}
+
+.burger-icon span::before,
+.burger-icon span::after {
+    content: '';
+    position: absolute;
+}
+
+.burger-icon span::before {
+    top: 8px;
+}
+
+.burger-icon span::after {
+    bottom: 8px;
+}
+
+.body--opened-menu .burger-icon span {
+    background: transparent;
+}
+
+.body--opened-menu .burger-icon span::before {
+    top: 0px;
+    transform: rotate(45deg);
+}
+
+.body--opened-menu .burger-icon span::after {
+    bottom: 0px;
+    transform: rotate(-45deg);
 }
 
 /* =================== */
@@ -297,6 +349,7 @@ body {
 .promotion__wrapper {
     display: flex;
     align-items: flex-end;
+    justify-content: center;
     flex-direction: column;
     gap: 45px;
 }
@@ -341,7 +394,7 @@ body {
 /* =================== */
 
 .transition {
-    background: rgb(255 191 76) ;
+    background: rgb(255 191 76);
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
@@ -388,9 +441,6 @@ body {
     gap: 30px;
 }
 
-/* .transition__item:nth-child(2) {
-    justify-content: flex-end;
-} */
 
 .transition__items img {
     width: 100%;
@@ -398,10 +448,125 @@ body {
     object-position: 50% 50%;
 }
 
-/* =================== */
+/* ======================================== */
 
 @media (max-width: 1120px) {
     .about__wrapper {
         border: none;
+    }
+
+    /* ================= */
+
+    .hero__gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ================ */
+
+    .advantages__items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 920px) {
+    .nav {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        background: rgb(255 196 86);
+        font-size: 24px;
+        display: none;
+        transform: translateY(50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all .4s;
+    }
+
+    .contacts {
+        flex-direction: column;
+        align-items: center;
+        padding: 26vh 15px 30px;
+        gap: 36px;
+        font-size: 30px;
+    }
+
+    .body--opened-menu .nav {
+        display: block;
+        transform: translateY(0%);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .burger-icon {
+        display: flex;
+    }
+
+    /* ===================== */
+
+    .about__wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* ===================== */
+
+    .promotion {
+        background: rgb(255 191 76);
+    }
+    .promotion__wrapper {
+        align-items: center;
+    }
+    
+    .promotion__qr {
+
+    }
+
+}
+
+@media (max-width: 750px) {
+    .hero__gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* =============== */
+
+    .advantages__items {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+}
+
+@media (max-width: 620px) {
+    .about__text {
+        text-align: center;
+        width: 489px;
+        font-size: 22px;
+    }
+
+    /* ==================== */
+
+    .promotion__title {
+        font-size: 21px ;
+    }
+    .promotion__qr {
+    max-width: 400px;
+    max-height: 500px;
+    margin: 0 auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .about__text p:nth-child(3) {
+        display: none;
+    }
+
+    .about__text {
+        width: 380px;
+    }
+
+    .advantages__title {
+        height: 64px;
     }
 }
