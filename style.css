@@ -436,8 +436,6 @@ body {
 .transition__items {
     display: flex;
     flex-direction: row;
-    max-width: 350px;
-    max-height: 500px;
     gap: 30px;
 }
 
